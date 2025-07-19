@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SmartVoice Transcriber | Enhanced Voice to Text</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-microphone-alt logo-icon"></i>
+                <h1>SmartVoice Transcriber</h1>
+            </div>
+            <p class="subtitle">Enhanced voice-to-text transcription with language detection</p>
+        </header>
+
+        <div class="main-app">
+            <div class="main-content">
+                <div class="card">
+                    <h2 class="card-title">
+                        <i class="fas fa-language"></i>
+                        Transcription Panel
+                    </h2>
+                    
+                    <div class="language-section">
+                        <label class="form-label">Select Default Language:</label>
+                        <select id="languageSelect" class="language-select">
+                            <!-- Comprehensive list of 100+ world languages -->
+                            <option value="en-US" selected>English (United States)</option>
+                            <option value="es-ES">Spanish (Spain)</option>
+                            <option value="fr-FR">French (France)</option>
+                            <option value="de-DE">German (Germany)</option>
+                            <option value="it-IT">Italian (Italy)</option>
+                            <option value="pt-BR">Portuguese (Brazil)</option>
+                            <option value="ru-RU">Russian (Russia)</option>
+                            <option value="ja-JP">Japanese (Japan)</option>
+                            <option value="zh-CN">Chinese (Simplified, China)</option>
+                            <option value="ko-KR">Korean (South Korea)</option>
+                            <option value="ar-SA">Arabic (Saudi Arabia)</option>
+                            <option value="hi-IN">Hindi (India)</option>
+                            <option value="bn-IN">Bengali (India)</option>
+                            <option value="ur-PK">Urdu (Pakistan)</option>
+                            <option value="tr-TR">Turkish (Turkey)</option>
+                            <option value="nl-NL">Dutch (Netherlands)</option>
+                            <option value="sv-SE">Swedish (Sweden)</option>
+                            <option value="da-DK">Danish (Denmark)</option>
+                            <option value="no-NO">Norwegian (Norway)</option>
+                            <option value="fi-FI">Finnish (Finland)</option>
+                            <option value="el-GR">Greek (Greece)</option>
+                            <option value="pl-PL">Polish (Poland)</option>
+                            <option value="cs-CZ">Czech (Czech Republic)</option>
+                            <option value="hu-HU">Hungarian (Hungary)</option>
+                            <option value="th-TH">Thai (Thailand)</option>
+                            <option value="vi-VN">Vietnamese (Vietnam)</option>
+                            <option value="id-ID">Indonesian (Indonesia)</option>
+                            <option value="ms-MY">Malay (Malaysia)</option>
+                            <option value="fil-PH">Filipino (Philippines)</option>
+                            <option value="he-IL">Hebrew (Israel)</option>
+                            <option value="fa-IR">Persian (Iran)</option>
+                            <option value="af-ZA">Afrikaans (South Africa)</option>
+                            <option value="am-ET">Amharic (Ethiopia)</option>
+                            <option value="az-AZ">Azerbaijani (Azerbaijan)</option>
+                            <option value="be-BY">Belarusian (Belarus)</option>
+                            <option value="bg-BG">Bulgarian (Bulgaria)</option>
+                            <option value="ca-ES">Catalan (Spain)</option>
+                            <option value="cy-GB">Welsh (United Kingdom)</option>
+                            <option value="et-EE">Estonian (Estonia)</option>
+                            <option value="eu-ES">Basque (Spain)</option>
+                            <option value="ga-IE">Irish (Ireland)</option>
+                            <option value="gl-ES">Galician (Spain)</option>
+                            <option value="gu-IN">Gujarati (India)</option>
+                            <option value="ha-NG">Hausa (Nigeria)</option>
+                            <option value="hr-HR">Croatian (Croatia)</option>
+                            <option value="hy-AM">Armenian (Armenia)</option>
+                            <option value="is-IS">Icelandic (Iceland)</option>
+                            <option value="jv-ID">Javanese (Indonesia)</option>
+                            <option value="ka-GE">Georgian (Georgia)</option>
+                            <option value="kk-KZ">Kazakh (Kazakhstan)</option>
+                            <option value="km-KH">Khmer (Cambodia)</option>
+                            <option value="kn-IN">Kannada (India)</option>
+                            <option value="ku-TR">Kurdish (Turkey)</option>
+                            <option value="ky-KG">Kyrgyz (Kyrgyzstan)</option>
+                            <option value="la-VA">Latin (Vatican)</option>
+                            <option value="lb-LU">Luxembourgish (Luxembourg)</option>
+                            <option value="lo-LA">Lao (Laos)</option>
+                            <option value="lt-LT">Lithuanian (Lithuania)</option>
+                            <option value="lv-LV">Latvian (Latvia)</option>
+                            <option value="mg-MG">Malagasy (Madagascar)</option>
+                            <option value="mi-NZ">Māori (New Zealand)</option>
+                            <option value="mk-MK">Macedonian (North Macedonia)</option>
+                            <option value="ml-IN">Malayalam (India)</option>
+                            <option value="mn-MN">Mongolian (Mongolia)</option>
+                            <option value="mr-IN">Marathi (India)</option>
+                            <option value="mt-MT">Maltese (Malta)</option>
+                            <option value="my-MM">Burmese (Myanmar)</option>
+                            <option value="ne-NP">Nepali (Nepal)</option>
+                            <option value="pa-IN">Punjabi (India)</option>
+                            <option value="ps-AF">Pashto (Afghanistan)</option>
+                            <option value="ro-RO">Romanian (Romania)</option>
+                            <option value="rw-RW">Kinyarwanda (Rwanda)</option>
+                            <option value="sd-PK">Sindhi (Pakistan)</option>
+                            <option value="si-LK">Sinhala (Sri Lanka)</option>
+                            <option value="sk-SK">Slovak (Slovakia)</option>
+                            <option value="sl-SI">Slovenian (Slovenia)</option>
+                            <option value="so-SO">Somali (Somalia)</option>
+                            <option value="sq-AL">Albanian (Albania)</option>
+                            <option value="sr-RS">Serbian (Serbia)</option>
+                            <option value="su-ID">Sundanese (Indonesia)</option>
+                            <option value="sw-KE">Swahili (Kenya)</option>
+                            <option value="ta-IN">Tamil (India)</option>
+                            <option value="te-IN">Telugu (India)</option>
+                            <option value="tg-TJ">Tajik (Tajikistan)</option>
+                            <option value="tk-TM">Turkmen (Turkmenistan)</option>
+                            <option value="tl-PH">Tagalog (Philippines)</option>
+                            <option value="tt-RU">Tatar (Russia)</option>
+                            <option value="ug-CN">Uyghur (China)</option>
+                            <option value="uk-UA">Ukrainian (Ukraine)</option>
+                            <option value="uz-UZ">Uzbek (Uzbekistan)</option>
+                            <option value="xh-ZA">Xhosa (South Africa)</option>
+                            <option value="yi-US">Yiddish (United States)</option>
+                            <option value="yo-NG">Yoruba (Nigeria)</option>
+                            <option value="zu-ZA">Zulu (South Africa)</option>
+                            <option value="as-IN">Assamese (India)</option>
+                            <option value="br-FR">Breton (France)</option>
+                            <option value="ceb-PH">Cebuano (Philippines)</option>
+                            <option value="co-FR">Corsican (France)</option>
+                            <option value="dv-MV">Dhivehi (Maldives)</option>
+                            <option value="dz-BT">Dzongkha (Bhutan)</option>
+                            <option value="ee-GH">Ewe (Ghana)</option>
+                            <option value="ff-SN">Fula (Senegal)</option>
+                            <option value="gd-GB">Scottish Gaelic (UK)</option>
+                            <option value="gn-PY">Guaraní (Paraguay)</option>
+                            <option value="ht-HT">Haitian Creole (Haiti)</option>
+                            <option value="iu-CA">Inuktitut (Canada)</option>
+                            <option value="kmr-TR">Kurmanji (Turkey)</option>
+                            <option value="ks-IN">Kashmiri (India)</option>
+                            <option value="lg-UG">Luganda (Uganda)</option>
+                            <option value="ln-CD">Lingala (DR Congo)</option>
+                            <option value="mg-MG">Malagasy (Madagascar)</option>
+                            <option value="na-NR">Nauru (Nauru)</option>
+                            <option value="ny-MW">Chichewa (Malawi)</option>
+                            <option value="om-ET">Oromo (Ethiopia)</option>
+                            <option value="qu-PE">Quechua (Peru)</option>
+                            <option value="rn-BI">Kirundi (Burundi)</option>
+                            <option value="sg-CF">Sango (Central African Republic)</option>
+                            <option value="sn-ZW">Shona (Zimbabwe)</option>
+                            <option value="ti-ET">Tigrinya (Ethiopia)</option>
+                            <option value="tn-BW">Tswana (Botswana)</option>
+                            <option value="ts-ZA">Tsonga (South Africa)</option>
+                            <option value="wo-SN">Wolof (Senegal)</option>
+                            <option value="yo-NG">Yoruba (Nigeria)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="toggle-container">
+                        <button id="toggleBtn" class="toggle-btn">
+                            <i class="fas fa-microphone"></i>
+                            Start Recording
+                        </button>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <div class="action-btn" id="copyBtn">
+                            <i class="fas fa-copy"></i>
+                            <span class="action-label">Copy Text</span>
+                        </div>
+                        <div class="action-btn" id="saveTextBtn">
+                            <i class="fas fa-file-alt"></i>
+                            <span class="action-label">Save as Text</span>
+                        </div>
+                        <div class="action-btn" id="savePdfBtn">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="action-label">Save as PDF</span>
+                        </div>
+                        <div class="action-btn" id="clearBtn">
+                            <i class="fas fa-sync-alt"></i>
+                            <span class="action-label">Clear</span>
+                        </div>
+                    </div>
+                    
+                    <div class="transcription-box">
+                        <textarea id="output" placeholder="Your transcribed text will appear here..."></textarea>
+                    </div>
+                    
+                    <div class="status-container">
+                        <div class="status-box">
+                            <div class="status-label">Status</div>
+                            <div id="statusValue" class="status-value">Ready</div>
+                        </div>
+                        <div class="status-box">
+                            <div class="status-label">Confidence</div>
+                            <div id="confidenceValue" class="status-value">N/A</div>
+                        </div>
+                        <div class="status-box">
+                            <div class="status-label">Detected Language</div>
+                            <div id="detectedLanguage" class="status-value">None</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ad-system">
+                    <div class="card">
+                        <h2 class="card-title">
+                            <i class="fas fa-ad"></i>
+                            Ad Management
+                        </h2>
+                        
+                        <div class="ad-form">
+                            <div class="ad-limit-warning" id="adLimitWarning" style="display: none;">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Maximum 10 ads allowed. Oldest ads will be removed automatically after 7 hours.
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Your Content Link:</label>
+                                <input type="url" id="adLink" class="form-input" placeholder="https://example.com">
+                            </div>
+                            
+                            <div class="auth-fields" id="authFields">
+                                <div class="form-group">
+                                    <label class="form-label">Username:</label>
+                                    <input type="text" id="adUsername" class="form-input" placeholder="Enter username">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Password:</label>
+                                    <input type="password" id="adPassword" class="form-input" placeholder="Enter password">
+                                </div>
+                            </div>
+                            
+                            <button id="submitAdBtn" class="btn submit-ad-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Ad
+                            </button>
+                        </div>
+                        
+                        <div class="ad-display-section">
+                            <h3 class="ad-display-title">
+                                <i class="fas fa-desktop"></i>
+                                Active Ads (Max 10)
+                            </h3>
+                            
+                            <div class="ad-container" id="adContainer">
+                                <div class="ad-card">
+                                    <div class="ad-image">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <div class="ad-content">
+                                        <div class="ad-title">Submit Your Ad</div>
+                                        <div class="ad-description">Create your content to appear in this space</div>
+                                        <a href="#" target="_blank" class="ad-link">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="card">
+                    <h2 class="card-title">
+                        <i class="fas fa-history"></i>
+                        Recent Activity
+                    </h2>
+                    
+                    <div class="activity-list" id="activityList">
+                        <div class="activity-item">
+                            <i class="fas fa-check-circle activity-icon"></i>
+                            <div class="activity-details">
+                                <div class="activity-title">App initialized</div>
+                                <div class="activity-time">Just now</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="enhancement-id">
+                        <div class="id-label">Your Unique ID:</div>
+                        <div class="id-value" id="userId">Loading...</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        Statistics
+                    </h2>
+                    
+                   уп
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-value" id="transcriptionStat">0</div>
+                            <div class="stat-label">Transcriptions</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-value" id="accuracyStat">0%</div>
+                            <div class="stat-label">Avg. Accuracy</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-value" id="adsStat">0</div>
+                            <div class="stat-label">Active Ads</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <h3 class="modal-title">
+                <i class="fas fa-lock"></i>
+                Verify Your Identity
+            </h3>
+            <div class="form-group">
+                <label class="form-label">Username:</label>
+                <input type="text" id="verifyUsername" class="form-input" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password:</label>
+                <input type="password" id="verifyPassword" class="form-input" placeholder="Enter password">
+            </div>
+            <button id="verifyBtn" class="btn btn-primary modal-btn">
+                <i class="fas fa-check"></i>
+                Verify
+            </button>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText"></span>
+    </div>
+</body>
+</html>
